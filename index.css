@@ -28,8 +28,14 @@ html, body {
   font-size: 4.25rem;
 }
 
-.title-header > h3 {
+.title-header > a {
   font-size: 1.50rem;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.title-header > a:hover {
+  text-decoration:underline;
 }
 
 .main-search {
@@ -145,4 +151,23 @@ html, body {
   color: #7e7e7e;
   font-size: 1.2rem;
   font-family: "Inter", sans-serif;
+}
+
+.watchlist-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Inter', sans-serif;
+}
+
+.watchlist-container > h1 {
+  color: #a8a8a8;
+}
+
+.watchlist-container > a {
+  font-size: 1.50rem;
+  color: #3b4252;
+  text-decoration: none;
+  font-weight: bold;
 }

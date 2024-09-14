@@ -1,9 +1,33 @@
 <html>
     <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <h1>watchlist.html</h1>
-        <script src="index.js"></script>
+        <div class="header-container">
+            <div class="title-header">
+                <h1>My Watchlist</h1>
+                <a href="./index.html">Search for Movies</a>
+            </div>
+            
+            <div class="watchlist-container">
+                <h1>Your watchlist is looking empty...</h1>
+                <a href="./index.html">
+                    <i class="fa-solid fa-circle-plus"></i>
+                    Lets add some movies!
+                </a>
+            </div>
+        </div>
+
+        <div class="results" id="search-results">
+
+        </div>
+        
+        <script src="index.js" type="module"></script>
     </body>
 </html>
