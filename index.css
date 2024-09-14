@@ -76,9 +76,73 @@ html, body {
   padding: 0 3.8rem 0 4rem;
   height: 2.5em;
   font-size: 1.75rem;
-  background-color: #F9FAFB; /* Blue background */
+  background-color: #F9FAFB;
   color: #374151;
-  border: none; /* Remove default button border */
+  border: none;
   cursor: pointer;
   border-left: 1px solid #7e7e7e;
+}
+
+.results {
+  margin-top: 8%;
+  
+}
+
+.movie-card {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  margin-inline: 3rem;
+  border-bottom: 1px solid #7e7e7e;
+  padding-block: 2.5rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.movie-card > img {
+  width: 100%;
+  max-width: 25vw;
+  margin-right: 1.5rem;
+}
+
+
+.details-one {
+  margin-top: 0;
+  font-size: 2.25rem;
+  font-weight: normal;
+}
+
+.imdb-rating {
+  font-weight: normal;
+  font-size: 0.85rem;
+  margin-left: 1rem;
+}
+
+.fa-star {
+  margin-right: 1.3rem;
+  color: #FEC654;
+  font-size: 0.7rem;
+}
+
+.details-two {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.details-two > p {
+  font-size: 1.75rem;
+  margin-block: 0;
+}
+
+.add-watchlist-btn {
+  font-size: 1.75rem;
+  border: none;
+  background-color: transparent;
+}
+
+.movie-plot {
+  color: #7e7e7e;
+  font-size: 1.2rem;
+  font-family: "Inter", sans-serif;
 }
