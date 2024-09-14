@@ -1,0 +1,84 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.title-header {
+  background-image: url('/images/andre-tan-THJJRUhNlEc-unsplash.jpg'), linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)); 
+  background-size: cover;
+  background-position: 0% 20%;
+  background-repeat: no-repeat;
+  background-blend-mode: darken;
+  height: 25vh;
+
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  
+  color: #FFFFFF;
+}
+
+.header-container {
+  position: relative;
+}
+
+.title-header > h1 {
+  font-size: 4.25rem;
+}
+
+.title-header > h3 {
+  font-size: 1.50rem;
+}
+
+.main-search {
+  display: flex;
+  justify-content: center;
+
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 80vw;
+  background-color: #FFFFFF;
+  border: 1px solid #7e7e7e;
+  border-radius: 11px;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  padding-left: 1rem;
+
+  position: absolute;
+  top: 93%;
+  z-index: 9;
+}
+
+.input-container > input {
+  flex: 1;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 40px;
+  font-size: 1.75rem;
+  border: none;
+}
+
+.input-container > i {
+  margin-right: 0.7rem;
+  color:#7e7e7e;
+  font-size: 1.75rem;
+  pointer-events: none;
+}
+
+.input-container > button {
+  padding: 0 3.8rem 0 4rem;
+  height: 2.5em;
+  font-size: 1.75rem;
+  background-color: #F9FAFB; /* Blue background */
+  color: #374151;
+  border: none; /* Remove default button border */
+  cursor: pointer;
+  border-left: 1px solid #7e7e7e;
+}
