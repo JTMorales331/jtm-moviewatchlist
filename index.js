@@ -13,6 +13,10 @@ document.addEventListener('click', (e) => {
   if (e.target.dataset.imdbid) {
     addToWatchlist(e.target.dataset.imdbid)
   }
+  if (e.target.dataset.watchlistid) {
+    console.log(e.target.dataset.watchlistid)
+    removeFromWatchlist(e.target.dataset.watchlistid)
+  }
 })
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -40,15 +44,13 @@ function addToWatchlist(imdbID) {
   })
 }
 
-// function removeFromWatchlist(imdbID) {
-//   fetch(`http://www.omdbapi.com/?i=${imdbID}&apikey=7dbbf5ff&plot=short`)
-//   .then(res => res.json())
-//   .then(movie => {
-//     console.log(movie)
-//     watchlistArray.push(movie)
-//     console.log(watchlistArray)
-//   })
-// }
+function removeFromWatchlist(imdbID) {
+  watchlistArray = watchlistArray.filter(movie => movie.imdbID !== imdbID)
+  
+  localStorage.setItem('watchlist', JSON.stringify(watchlistArray))
+
+  renderWatchlist()
+}
 
 function searchMovie(movieName) {
   fetch(`http://www.omdbapi.com/?apikey=7dbbf5ff&s=${movieName}&plot=short`)
@@ -76,7 +78,7 @@ function getWatchlistDetails() {
                 <p>${data.Runtime}</p>
                 <p>${data.Genre}</p>
                 <button
-                  class="remove-watchlist-btn"
+                  class="watchlist-btn"
                   data-watchlistid="${data.imdbID}"
                 >
                 <i class="fa-solid fa-circle-minus"></i>
@@ -110,7 +112,7 @@ function getMoviesDetails() {
                 <p>${data.Runtime}</p>
                 <p>${data.Genre}</p>
                 <button
-                  class="add-watchlist-btn"
+                  class="watchlist-btn"
                   data-imdbid="${data.imdbID}"
                 >
                 <i class="fa-solid fa-circle-plus"></i>
