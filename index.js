@@ -30,6 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if(document.getElementById('watchlist-container')) {
     console.log('watchlist-container rendered')
     renderWatchlist()
+  } else if(document.getElementById('search-results')) {
+    console.log('search-results rendered')
+    render()
   }
 })
 
@@ -53,11 +56,23 @@ function removeFromWatchlist(imdbID) {
 }
 
 function searchMovie(movieName) {
-  fetch(`http://www.omdbapi.com/?apikey=7dbbf5ff&s=${movieName}&plot=short`)
+  fetch(`http://www.omdbapi.com/?apikey=7dbbf5ff&s=${movieName}&plot=short&type=movie`)
   .then(res => res.json())
   .then(data => {
     movieSearchArray = data.Search
-    render()
+    console.log(movieSearchArray)
+    if (movieSearchArray && movieSearchArray.length > 0) {
+      console.log('rendering')
+      render()
+    } else {
+      console.log('array empty')
+      document.getElementById('search-results').innerHTML = `
+        <div class="message">
+          <h1>Unable to find what you’re looking for. Please try another search.</h1>
+        </div>
+      `
+    }
+    
   })
 }
 
@@ -65,7 +80,7 @@ function getWatchlistDetails() {
   console.log(watchlistArray)
   console.log('getting watchlist')
   let promises = watchlistArray.map(movie => {
-    return fetch(`http://www.omdbapi.com/?i=${movie.imdbID}&apikey=7dbbf5ff&plot=short`)
+    return fetch(`http://www.omdbapi.com/?i=${movie.imdbID}&apikey=7dbbf5ff&plot=short&ype=movie`)
       .then(res => res.json())
       .then(data => {
         return `
@@ -99,7 +114,7 @@ function getWatchlistDetails() {
 
 function getMoviesDetails() {
   let promises = movieSearchArray.map(movie => {
-    return fetch(`http://www.omdbapi.com/?i=${movie.imdbID}&apikey=7dbbf5ff&plot=short`)
+    return fetch(`http://www.omdbapi.com/?i=${movie.imdbID}&apikey=7dbbf5ff&plot=short&type=movie`)
       .then(res => res.json())
       .then(data => {
         return `
@@ -132,16 +147,39 @@ function getMoviesDetails() {
 }
 
 function render() {
-  getMoviesDetails().then(movieHtml => {
-    document.getElementById('search-results').innerHTML = movieHtml
-  })
-  
+  if (movieSearchArray.length === 0) {
+    document.getElementById('search-results').innerHTML = `
+      <div class="message">
+        <i class="fa-solid fa-film"></i>
+        <h1>Start Exploring</h1>
+      </div>
+    `;
+  } else {
+    getMoviesDetails().then(movieHtml => {
+      document.getElementById('search-results').innerHTML = movieHtml;
+    });
+  }
 }
+
 
 function renderWatchlist() {
   console.log('rendering watchlist')
-  getWatchlistDetails().then(movieHtml => {
-    document.getElementById('watchlist-container').innerHTML = movieHtml
-    console.log('rendering successful')
-  })
+  console.log(watchlistArray)
+  if (watchlistArray.length === 0) {
+    console.log('empty watchlist')
+    document.getElementById('watchlist-container').innerHTML = `
+      <div class="message">
+        <h1>Your watchlist is looking empty...</h1>
+        <a href="./index.html">
+            <i class="fa-solid fa-circle-plus"></i>
+            Lets add some movies!
+        </a>
+      </div>
+    `
+  } else {
+    getWatchlistDetails().then(movieHtml => {
+      document.getElementById('watchlist-container').innerHTML = movieHtml
+      console.log('rendering successful')
+    })
+  } 
 }

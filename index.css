@@ -89,8 +89,37 @@ html, body {
   border-left: 1px solid #7e7e7e;
 }
 
+.message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #DFDDDD;
+  font-family: 'Inter', sans-serif;
+  /* border: 1px solid red; */
+  position: relative;
+  top: 10vh;
+}
+
+.message > h1 {
+  font-size: 3rem;
+  text-align: center;
+}
+
+.message > i {
+  font-size: 9rem;
+}
+
+.message > a {
+  font-size: 2.5rem;
+  color: #3b4252;
+  text-decoration: none;
+  font-weight: bold;
+}
+
 .results {
   margin-top: 8%;
+  /* border: 1px solid red; */
   
 }
 
@@ -158,16 +187,4 @@ html, body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-family: 'Inter', sans-serif;
-}
-
-.watchlist-container > h1 {
-  color: #a8a8a8;
-}
-
-.watchlist-container > a {
-  font-size: 1.50rem;
-  color: #3b4252;
-  text-decoration: none;
-  font-weight: bold;
 }
